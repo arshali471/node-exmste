@@ -1,0 +1,12 @@
+node_modules
+build
+.env*
+uploads
+config.txt
+private_key.pem
+public_key.pem
+.exmwall.key
+.exmwall.soc.url
+.exmwall.url
+.questionData
+

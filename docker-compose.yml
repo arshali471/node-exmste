@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+# Mongo Service
+  mongo_db:
+    container_name: db_container_ste
+    image: mongo:5.0.2
+    restart: unless-stopped
+    volumes:
+      - mongo_db:/data/db
+    ports:
+      - 27019:27017
+  api:
+    depends_on:
+      - mongo_db
+    build: .
+    restart: unless-stopped
+    ports:
+      - 4600:4600
+    
+    # To map volumes for dev
+    # volumes:
+      # - .:/app
+    
+    environment:
+      - DB_STRING=mongodb://mongo_db:27017/exmste
+      - PORT=4600
+volumes: 
+  mongo_db: {}
